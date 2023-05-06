@@ -1,11 +1,14 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+
+  const { isSignedIn } = useUser();
 
   return (
     <>
@@ -46,6 +49,10 @@ const Home: NextPage = () => {
           <p className="text-2xl text-white">
             {hello.data ? hello.data.greeting : "Loading tRPC query..."}
           </p>
+          <div>
+            {!isSignedIn && <SignInButton />}
+            {!!isSignedIn && <UserButton />}
+          </div>
         </div>
       </main>
     </>
