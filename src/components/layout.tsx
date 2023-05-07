@@ -1,9 +1,9 @@
 import type { PropsWithChildren } from "react";
 
-export const PageLayout = (props: PropsWithChildren) => {
+export const Layout = (props: PropsWithChildren) => {
   return (
-    <main className="overflow-none flex h-screen justify-center">
-      <div className="flex h-full w-full flex-col sm:max-w-3xl">
+    <main className="flex overflow-none">
+      <div className="flex flex-col h-full w-full">
         {props.children}
       </div>
     </main>
