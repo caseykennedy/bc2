@@ -1,10 +1,12 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { withClerkMiddleware } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export default authMiddleware({
-  // Make the homepage accessible while signed out
-  publicRoutes: ["/"]
-});
+export default withClerkMiddleware((_req: NextRequest) => {
+  return NextResponse.next()
+})
 
+// Stop Middleware running on static files
 export const config = {
   matcher: [
     /*
@@ -12,13 +14,8 @@ export const config = {
      * - _next
      * - static (static files)
      * - favicon.ico (favicon file)
-     * - public folder
      */
-    "/((?!static|.*\\..*|_next|favicon.ico).*)",
-    "/",
-  ],
-};
-
-// export const config = {
-//   matcher: ["/((?!.*\\..*|_next).*)"],
-// };
+    "/(.*?trpc.*?|(?!static|.*\\..*|_next|favicon.ico).*)",
+    "/"
+  ]
+}
