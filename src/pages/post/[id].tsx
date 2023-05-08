@@ -26,9 +26,7 @@ const SinglePostPage: NextPage<{ id: string }> = ({ id }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const ssg = generateSSGHelper();
-
   const id = context.params?.id;
-
   if (typeof id !== "string") throw new Error("no id");
 
   await ssg.posts.getById.prefetch({ id });

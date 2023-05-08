@@ -7,6 +7,7 @@ import Image from "next/image";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+
 import { Layout } from "~/components/layout";
 import { PostView } from "~/components/postview";
 
@@ -87,7 +88,7 @@ const Feed = () => {
   if (!data) return <div>Something went wrong</div>;
 
   return (
-    <div className="flex grow flex-col overflow-y-scroll">
+    <div className="flex grow flex-col">
       {[...data].map((fullPost) => (
         <PostView {...fullPost} key={fullPost.post.id} />
       ))}
@@ -105,18 +106,23 @@ const Home: NextPage = () => {
   if (!userLoaded) return <div />;
 
   return (
-    <main id="index-page">
-      <div className="flex border-b border-zinc-700 p-4">
-        {!isSignedIn && (
-          <div className="flex justify-center">
-            <SignInButton />
+    <Layout>
+      <section className="p-4">
+        <div className="flex flex-col gap-4 xl:flex-row">
+          <div className="flex-1">
+            <div className="flex border-b border-zinc-700 p-4">
+              {!isSignedIn && (
+                <div className="flex justify-center">
+                  <SignInButton />
+                </div>
+              )}
+              {isSignedIn && <CreatePostWizard />}
+            </div>
+            <Feed />
           </div>
-        )}
-        {isSignedIn && <CreatePostWizard />}
-      </div>
-
-      <Feed />
-    </main>
+        </div>
+      </section>
+    </Layout>
   );
 };
 

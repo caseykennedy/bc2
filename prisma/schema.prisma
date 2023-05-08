@@ -11,21 +11,29 @@ generator client {
     provider = "prisma-client-js"
 }
 
-// model Example {
-//     id        String   @id @default(cuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-// }
-
 model Post {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    // updatedAt DateTime @updatedAt
-    // title     String
-    content   String?  @db.VarChar(255)
+    updatedAt DateTime @updatedAt
     published Boolean  @default(false)
+
+    kind     String
+    category String @db.VarChar(56)
+    title    String @db.VarChar(200)
+    content  String @db.VarChar(256)
+    authorId String
+    comments Comment[]
+
     // author    User?    @relation(fields: [authorId], references: [id])
-    authorId  String
 
     @@index([authorId])
+}
+
+model Comment {
+    id     Int     @id @default(autoincrement())
+    // Other fields
+    Post   Post?   @relation(fields: [postId], references: [id]) // A comment can have one post
+    postId String?
+
+    @@index([postId])
 }
