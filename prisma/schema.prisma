@@ -11,29 +11,158 @@ generator client {
     provider = "prisma-client-js"
 }
 
+// model Post {
+//     id        String   @id @default(cuid())
+//     createdAt DateTime @default(now())
+
+//     kind               String?   @db.VarChar(255)
+//     title              String?   @db.VarChar(255)
+//     content            String    @db.VarChar(255)
+//     published          Boolean   @default(false)
+//     isActive           Boolean   @default(true)
+//     isActiveNewComment Boolean   @default(true)
+//     // author             User      @relation(fields: [AuthorId], references: [Id])
+//     authorId           String
+//     // comments           Comment[]
+//     // tag                Tag[]     @relation("TagToPost", fields: [tagId], references: [id])
+//     // tagId              Int?
+//     category           Category? @relation(fields: [categoryId], references: [id])
+//     categoryId         Int?
+//     User               User?     @relation(fields: [userId], references: [id])
+//     userId             Int?
+// }
+
+model User {
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
+    // updatedAt DateTime @updatedAt
+
+    firstname String?
+    lastname  String?
+    email     String  @unique
+    username  String  @unique
+    password  String
+
+    posts        Post[]
+    subs         Sub[]
+    comments     Comment[]
+    postVotes    PostVote[]
+    commentVotes CommentVote[]
+
+    @@index([email, username])
+}
+
+// model Post {
+//     id        String   @id @default(cuid())
+//     createdAt DateTime @default(now())
+//     // updatedAt DateTime @updatedAt
+//     published Boolean  @default(false)
+
+//     kind     String
+//     category String    @db.VarChar(56)
+//     title    String    @db.VarChar(200)
+//     content  String    @db.VarChar(256)
+//     authorId String
+//     comments Comment[]
+
+//     // author    User?    @relation(fields: [authorId], references: [id])
+
+//     @@index([authorId])
+// }
+
 model Post {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    published Boolean  @default(false)
+    // updatedAt DateTime @updatedAt
 
-    kind     String
-    category String @db.VarChar(56)
-    title    String @db.VarChar(200)
-    content  String @db.VarChar(256)
     authorId String
-    comments Comment[]
+    content  String    @db.VarChar(256)
 
-    // author    User?    @relation(fields: [authorId], references: [id])
+    identifier String?    @unique @default(cuid())
+    title      String?
+    slug       String?    @unique
+    body       String?
+    comments   Comment[]
+    votes      PostVote[]
 
-    @@index([authorId])
+    author     User?   @relation(fields: [authorName], references: [username], onDelete: Cascade, onUpdate: Cascade)
+    authorName String?
+
+    sub     Sub?    @relation(fields: [subName], references: [name], onDelete: Cascade, onUpdate: Cascade)
+    subName String?
+
+    @@index([identifier, slug])
+}
+
+model Sub {
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
+
+    name        String  @unique
+    title       String
+    description String?
+    imageUrn    String?
+    bannerUrn   String?
+    posts       Post[]
+
+    creator     User   @relation(fields: [creatorName], references: [username], onDelete: Cascade, onUpdate: Cascade)
+    creatorName String
+
+    @@index([name])
 }
 
 model Comment {
-    id     Int     @id @default(autoincrement())
-    // Other fields
-    Post   Post?   @relation(fields: [postId], references: [id]) // A comment can have one post
-    postId String?
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
+    // updatedAt DateTime @updatedAt
 
-    @@index([postId])
+    body  String
+    votes CommentVote[]
+
+    author     User   @relation(fields: [authorName], references: [username], onDelete: Cascade, onUpdate: Cascade)
+    authorName String
+    post       Post   @relation(fields: [postSlug], references: [slug], onDelete: Cascade, onUpdate: Cascade)
+    postSlug   String
+
+    @@index([id])
 }
+
+model PostVote {
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
+    // updatedAt DateTime @default(now())
+
+    value Int
+
+    user     User   @relation(fields: [username], references: [username], onDelete: Cascade, onUpdate: Cascade)
+    username String
+
+    post   Post   @relation(fields: [postId], references: [identifier], onDelete: Cascade, onUpdate: Cascade)
+    postId String
+
+    @@index([id, postId])
+}
+
+model CommentVote {
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
+    // updatedAt DateTime @default(now())
+
+    value Int
+
+    user     User   @relation(fields: [username], references: [username], onDelete: Cascade, onUpdate: Cascade)
+    username String
+
+    comment   Comment @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    commentId String
+
+    @@index([id, commentId])
+}
+
+// model Tag {
+//     id        Int      @id @default(autoincrement())
+//     createdAt DateTime @default(now())
+
+//     title String @unique
+//     posts Post[] @relation("TagToPost")
+// }

@@ -7,8 +7,6 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 
-import { Header } from "~/components/header";
-
 const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   return (
     <ClerkProvider {...pageProps}>
