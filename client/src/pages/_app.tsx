@@ -12,7 +12,7 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
     <ClerkProvider {...pageProps}>
       <Head>
         <title>bc leaks</title>
-        <meta name="description" content="💭" />
+        <meta name="description" content="bc2 refactor" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />

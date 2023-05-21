@@ -9,9 +9,9 @@ const Sanity: NextPage<{ slug: string }> = ({ slug }) => {
   const { data } = api.sanity.getBySlug.useQuery({
     slug,
   });
-  if (!data) return <div>404</div>;
 
-  console.log("post:", data.categories);
+  if (!data) return <div>404</div>;
+  
   return (
     <>
       <Head>
@@ -34,6 +34,7 @@ const Sanity: NextPage<{ slug: string }> = ({ slug }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const ssg = generateSSGHelper();
   const slug = context.params?.slug;
+  
   if (typeof slug !== "string") throw new Error("no slug");
 
   await ssg.sanity.getBySlug.prefetch({ slug });

@@ -86,6 +86,11 @@ export const createTRPCRouter = t.router;
  */
 export const publicProcedure = t.procedure;
 
+/**
+ * Private (authenticated) procedure
+ *
+ * This is the base piece you use to build new queries and mutations on your tRPC API. It guarantees that a user querying is authorized.
+ */
 const enforceUserIsAuthed = t.middleware(async ({ ctx, next }) => {
   if (!ctx.userId) {
     throw new TRPCError({

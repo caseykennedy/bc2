@@ -76,7 +76,7 @@ model Post {
     // updatedAt DateTime @updatedAt
 
     authorId String
-    content  String    @db.VarChar(256)
+    content  String @db.VarChar(256)
 
     identifier String?    @unique @default(cuid())
     title      String?

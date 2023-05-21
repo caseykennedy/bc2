@@ -97,8 +97,10 @@ const Feed = () => {
 
 const Home: NextPage = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
+
   // Start fetching asap
   api.posts.getAll.useQuery();
+  
   // Return empty div if user isn't loaded
   if (!userLoaded) return <div />;
 
