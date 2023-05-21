@@ -8,4 +8,4 @@
 /lerna-debug.log
 
 # Ignore hidden files as default
-.*
+# .*
