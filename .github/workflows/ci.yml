@@ -23,13 +23,13 @@ jobs:
           node-version: "16.x"
 
       - name: Install Dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Typecheck
-        run: pnpm run typecheck
+        run: npm run typecheck
 
       - name: Lint
-        run: pnpm run lint
+        run: npm run lint
 
       - name: Print Environment Variable
         run: echo $MY_ENV_VAR
