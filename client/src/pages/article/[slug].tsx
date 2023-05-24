@@ -16,14 +16,16 @@ const Sanity: NextPage<{ slug: string }> = ({ slug }) => {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <article>
-        {/* <h1>{post?.slug?.current}</h1> */}
-        <h1>{data.title}</h1>
-        <p>{data.publishedAt}</p>
-        {data.categories.map((cat) => (
-          <p key={cat}>{cat}</p>
-        ))}
-      </article>
+      <section className="p-4">
+        <article>
+          {/* <h1>{post?.slug?.current}</h1> */}
+          <h1>{data.title}</h1>
+          <p>{data.publishedAt}</p>
+          {data.categories.map((cat) => (
+            <p key={cat}>{cat}</p>
+          ))}
+        </article>
+      </section>
     </>
   );
 };

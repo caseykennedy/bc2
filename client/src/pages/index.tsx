@@ -111,9 +111,7 @@ const Card = (props: ArticleShape) => {
     <Link href={`/article/${props.slug}`} className="w-full">
       <div className="flex flex-col border border-zinc-800 p-4">
         <h3 className="mb-4">{props.title}</h3>
-        <p>
-          {`${dayjs(props.publishedAt).fromNow()}`}
-        </p>
+        <p>{`${dayjs(props.publishedAt).fromNow()}`}</p>
         <p>{props.author.name}</p>
         {/* <p>{props.body}</p> */}
         {/* <p>{props.categories}</p> */}
@@ -163,12 +161,10 @@ const Home: NextPage = () => {
   return (
     <>
       <section className="p-4">
-        <div className="flex flex-col gap-4 xl:flex-row">
-          <div className="flex-1">
-            <Billboard />
-            {/* <Feed /> */}
-          </div>
-        </div>
+        <Billboard />
+      </section>
+      <section className="p-4 border-t border-zinc-800">
+        <Feed />
       </section>
     </>
   );
