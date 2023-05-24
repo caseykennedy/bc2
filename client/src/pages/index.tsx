@@ -1,4 +1,5 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import dayjs from "dayjs";
 import { type NextPage } from "next";
 import Link from "next/link";
 import { useState } from "react";
@@ -109,8 +110,10 @@ const Card = (props: ArticleShape) => {
   return (
     <Link href={`/article/${props.slug}`} className="w-full">
       <div className="flex flex-col border border-zinc-800 p-4">
-        <h2 className="mb-4">{props.title}</h2>
-        <p>{props.publishedAt}</p>
+        <h3 className="mb-4">{props.title}</h3>
+        <p>
+          {`${dayjs(props.publishedAt).fromNow()}`}
+        </p>
         <p>{props.author.name}</p>
         {/* <p>{props.body}</p> */}
         {/* <p>{props.categories}</p> */}
@@ -133,13 +136,13 @@ const Billboard = () => {
 
   if (!data) return <div>Something went wrong</div>;
   return (
-    <div className="flex flex-col md:flex-row gap-4">
-      <div className="flex-[2] w-full">
+    <div className="flex flex-col gap-4 md:flex-row">
+      <div className="w-full flex-[2]">
         {[...data].slice(0, 1).map((post) => (
           <Card {...post} key={post.slug} />
         ))}
       </div>
-      <div className="flex-[1] flex flex-col gap-4 w-full">
+      <div className="flex w-full flex-[1] flex-col gap-4">
         {[...data].map((post) => (
           <Card {...post} key={post.slug} />
         ))}
