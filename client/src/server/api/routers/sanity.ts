@@ -31,11 +31,46 @@ export interface ArticleShape extends SanityBody {
 }
 
 export const sanityRouter = createTRPCRouter({
+  getAll: publicProcedure
+    .query(async ({ ctx }) => {
+      const post: ArticleShape[] = await ctx.sanity.fetch(
+        groq`*[_type == "post"]{
+          _createAt,
+          _id,
+          _rev,
+          _updateAt,
+          title,
+          "name": author->name,
+          "categories": categories[]->title,
+          slug{current},
+          author->,
+          publishedAt,
+          body
+        }`,
+      );
+
+      if (!post) throw new TRPCError({ code: "NOT_FOUND" });
+
+      return post.map((post) => ({
+        title: post.title,
+        name: post.name,
+        categories: post.categories,
+        slug: post.slug.current,
+        author: post.author,
+        publishedAt: post.publishedAt,
+        body: post.body,
+      }))
+    }),
+
   getBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ ctx, input }) => {
       const post: ArticleShape = await ctx.sanity.fetch(
         groq`*[_type == "post" && slug.current == $slug][0]{
+          _createAt,
+          _id,
+          _rev,
+          _updateAt,
           title,
           "name": author->name,
           "categories": categories[]->title,

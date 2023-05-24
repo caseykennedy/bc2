@@ -1,11 +1,12 @@
+import "~/styles/globals.css";
+
+import { ClerkProvider } from "@clerk/nextjs";
 import { type AppType } from "next/app";
 import Head from "next/head";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 
+import { Layout } from "~/components/layout";
 import { api } from "~/utils/api";
-
-import "~/styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   return (
@@ -15,7 +16,9 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
         <meta name="description" content="bc2 refactor" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
       <Toaster position="bottom-center" />
     </ClerkProvider>
   );

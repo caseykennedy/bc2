@@ -1,8 +1,9 @@
 import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import superjson from "superjson";
+
 import { appRouter } from "~/server/api/root";
 import { prisma } from "~/server/db";
 import { client as sanity } from "~/utils/sanity"
-import superjson from "superjson";
 
 export const generateSSGHelper = () =>
   createProxySSGHelpers({

@@ -1,14 +1,12 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
-
-import { api } from "~/utils/api";
-
-import { LoadingPage, LoadingSpinner } from "~/components/loading";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-import { Layout } from "~/components/layout";
+import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { PostView } from "~/components/postview";
+import { api } from "~/utils/api";
 
 const CreatePostWizard = () => {
   const { user } = useUser();
@@ -95,33 +93,81 @@ const Feed = () => {
   );
 };
 
+type ArticleShape = {
+  author: {
+    name: string;
+  };
+  name: string;
+  title: string;
+  publishedAt: string;
+  body: string;
+  categories: string[];
+  slug: string;
+};
+
+const Card = (props: ArticleShape) => {
+  return (
+    <Link href={`/article/${props.slug}`} className="w-full">
+      <div className="flex flex-col border border-zinc-800 p-4">
+        <h2 className="mb-4">{props.title}</h2>
+        <p>{props.publishedAt}</p>
+        <p>{props.author.name}</p>
+        {/* <p>{props.body}</p> */}
+        {/* <p>{props.categories}</p> */}
+        <p>{props.slug}</p>
+      </div>
+    </Link>
+  );
+};
+
+const Billboard = () => {
+  const { data, isLoading: postsLoading } = api.sanity.getAll.useQuery();
+  console.log("data:", data);
+
+  if (postsLoading)
+    return (
+      <div className="flex grow">
+        <LoadingPage />
+      </div>
+    );
+
+  if (!data) return <div>Something went wrong</div>;
+  return (
+    <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex-[2] w-full">
+        {[...data].slice(0, 1).map((post) => (
+          <Card {...post} key={post.slug} />
+        ))}
+      </div>
+      <div className="flex-[1] flex flex-col gap-4 w-full">
+        {[...data].map((post) => (
+          <Card {...post} key={post.slug} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Home: NextPage = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
 
   // Start fetching asap
   api.posts.getAll.useQuery();
-  
+
   // Return empty div if user isn't loaded
   if (!userLoaded) return <div />;
 
   return (
-    <Layout>
+    <>
       <section className="p-4">
         <div className="flex flex-col gap-4 xl:flex-row">
           <div className="flex-1">
-            <div className="flex border-b border-zinc-700 p-4">
-              {!isSignedIn && (
-                <div className="flex justify-center">
-                  <SignInButton />
-                </div>
-              )}
-              {isSignedIn && <CreatePostWizard />}
-            </div>
-            <Feed />
+            <Billboard />
+            {/* <Feed /> */}
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "videos",
+    "link": "/videos"
+  },
+  {
+    "name": "articles",
+    "link": "/articles"
+  },
+  {
+    "name": "community",
+    "link": "/community"
+  },
+  {
+    "name": "merch",
+    "link": "/merch"
+  }
+]

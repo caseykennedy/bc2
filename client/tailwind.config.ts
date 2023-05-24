@@ -13,7 +13,13 @@ export default {
       sans: ['Arial', 'sans-serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        green: {
+          50: '#00ff9b',
+        },
+      },
+    },
   },
   plugins: [],
 } satisfies Config;
