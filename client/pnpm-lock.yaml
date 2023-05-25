@@ -34,6 +34,12 @@ dependencies:
   '@upstash/redis':
     specifier: ^1.20.6
     version: 1.20.6
+  coingecko-api:
+    specifier: ^1.0.10
+    version: 1.0.10
+  coingecko-api-v3:
+    specifier: ^0.0.25
+    version: 0.0.25
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
@@ -60,6 +66,9 @@ dependencies:
     version: 3.21.4
 
 devDependencies:
+  '@types/coingecko-api':
+    specifier: ^1.0.10
+    version: 1.0.10
   '@types/eslint':
     specifier: ^8.21.3
     version: 8.21.3
@@ -583,6 +592,10 @@ packages:
       '@types/connect': 3.4.35
       '@types/node': 18.15.5
     dev: false
+
+  /@types/coingecko-api@1.0.10:
+    resolution: {integrity: sha512-ENJO5JzV7qTj8GfrRWAy8lom4RPQv03stvw2z9riz0z7WOXcaorc8OPov8JEekoGQ397O1BbvgPjZj7bWgqdgg==}
+    dev: true
 
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
@@ -1162,6 +1175,16 @@ packages:
 
   /client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /coingecko-api-v3@0.0.25:
+    resolution: {integrity: sha512-nRZPp0mgDifLsAtQK0bO1J/fLi4VjlHRw2z2SbzSM6J/PdGBWtplUFiCopfTzpJ9Fy56kFYztjijxGskKFKOZw==}
+    dependencies:
+      https: 1.0.0
+    dev: false
+
+  /coingecko-api@1.0.10:
+    resolution: {integrity: sha512-7YLLC85+daxAw5QlBWoHVBVpJRwoPr4HtwanCr8V/WRjoyHTa1Lb9DQAvv4MDJZHiz4no6HGnDQnddtjV35oRA==}
     dev: false
 
   /color-convert@2.0.1:
@@ -2132,6 +2155,10 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /https@1.0.0:
+    resolution: {integrity: sha512-4EC57ddXrkaF0x83Oj8sM6SLQHAWXw90Skqu2M4AEWENZ3F02dFJE/GARA8igO79tcgYqGrD7ae4f5L3um2lgg==}
+    dev: false
 
   /human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}

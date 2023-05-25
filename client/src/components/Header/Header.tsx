@@ -27,7 +27,7 @@ const Header = () => {
         <div className="flex-1">
           <Link href="/" className="flex flex-row items-center gap-4">
             <LogoSymbol />
-            {/* BC Leaks */}
+            BC Leaks
           </Link>
         </div>
 

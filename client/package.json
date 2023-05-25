@@ -22,6 +22,8 @@
     "@trpc/server": "^10.18.0",
     "@upstash/ratelimit": "^0.4.2",
     "@upstash/redis": "^1.20.6",
+    "coingecko-api": "^1.0.10",
+    "coingecko-api-v3": "^0.0.25",
     "dayjs": "^1.11.7",
     "groq": "^3.10.1",
     "next": "13.3.4",
@@ -32,6 +34,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/coingecko-api": "^1.0.10",
     "@types/eslint": "^8.21.3",
     "@types/node": "^18.15.5",
     "@types/prettier": "^2.7.2",

@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 
-import { CryptoTicker } from "~/components/crypto-ticker";
-import Header from "~/components/Header";
+import CryptoTicker from "~/components/crypto-ticker";
+import Header from "~/components/header";
 
 export const Layout = (props: PropsWithChildren) => {
   return (

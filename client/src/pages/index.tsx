@@ -106,16 +106,16 @@ type ArticleShape = {
   slug: string;
 };
 
-const Card = (props: ArticleShape) => {
+const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
-    <Link href={`/article/${props.slug}`} className="w-full">
-      <div className="flex flex-col border border-zinc-800 p-4">
-        <h3 className="mb-4">{props.title}</h3>
-        <p>{`${dayjs(props.publishedAt).fromNow()}`}</p>
-        <p>{props.author.name}</p>
+    <Link href={`/article/${slug}`} className="w-full">
+      <div className="flex flex-col border-b border-zinc-800 p-4">
+        <h3 className="mb-4">{title}</h3>
+        <p>{`${dayjs(publishedAt).fromNow()}`}</p>
+        <p>{author.name}</p>
         {/* <p>{props.body}</p> */}
         {/* <p>{props.categories}</p> */}
-        <p>{props.slug}</p>
+        <p>{slug}</p>
       </div>
     </Link>
   );
@@ -135,7 +135,7 @@ const Billboard = () => {
   if (!data) return <div>Something went wrong</div>;
   return (
     <div className="flex flex-col gap-4 md:flex-row">
-      <div className="w-full flex-[2]">
+      <div className="flex w-full flex-[2] flex-col gap-4">
         {[...data].slice(0, 1).map((post) => (
           <Card {...post} key={post.slug} />
         ))}
@@ -163,9 +163,9 @@ const Home: NextPage = () => {
       <section className="p-4">
         <Billboard />
       </section>
-      <section className="p-4 border-t border-zinc-800">
+      {/* <section className="p-4 border-t">
         <Feed />
-      </section>
+      </section> */}
     </>
   );
 };
