@@ -27,12 +27,12 @@ const Coin = ({
   //   }
   // }
   return (
-    <div className="flex flex-1 flex-row items-center gap-2 bg-zinc-950 px-4 py-3 text-sm">
-      <div className="flex items-center justify-center overflow-hidden rounded-full border border-zinc-600 bg-zinc-900">
+    <div className="flex flex-1 flex-row flex-nowrap items-center gap-2 px-8 py-3 text-sm">
+      <div className="h-[24px] w-[24px] flex items-center justify-center overflow-hidden rounded-full border border-zinc-600 bg-zinc-900">
         <img width="24px" height="24px" src={image} alt={name} />
       </div>
       <div className="flex flex-row gap-2">
-        <div className="text-zinc-400">{name}</div>
+        <div className="text-zinc-400 whitespace-nowrap">{name}</div>
 
         <div className="">{current_price}</div>
 
@@ -83,8 +83,8 @@ const CryptoTicker = () => {
   }, [data]);
 
   return (
-    <div className="no-scrollbar flex w-full flex-row items-center justify-center overflow-x-auto overflow-y-scroll border-b border-zinc-800 bg-zinc-800">
-      <div className="flex grow flex-row gap-[1px]">
+    <div className="no-scrollbar flex w-full flex-row items-center justify-center overflow-x-auto overflow-y-scroll border-b border-zinc-800 bg-zinc-950">
+      <div className="flex grow flex-row">
         {!isLoading ? (
           data?.map((value, idx) => <Coin {...value} key={idx} />)
         ) : (

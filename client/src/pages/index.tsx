@@ -113,19 +113,20 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
       <div className="flex flex-col gap-4 border-b border-zinc-800 px-2 pb-4">
         <figure className="aspect-video overflow-hidden rounded-md relative">
           <Image
-            src="https://images.unsplash.com/photo-1684182034463-90724c4947cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2096&q=80"
+            src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
             alt="alt"
             fill={true}
             style={{ objectFit: "cover" }}
+            sizes="100%"
           />
         </figure>
         <div>
           <p className="text-sm">{dayjs(publishedAt).format("MMM DD, YYYY")}</p>
-          <h3 className="mb-4 text-4xl max-w-[30ch]">
+          <h3 className="mb-8 text-4xl max-w-[36ch]">
             How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
             Alike
           </h3>
-          <div className="flex w-full grow flex-row items-center justify-between">
+          <div className="flex w-full grow flex-row items-center justify-between text-zinc-500">
             <span>see more +</span> <span>3 min read</span>
           </div>
           {/* <p>{props.body}</p> */}
@@ -142,10 +143,11 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
       <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 px-2 pb-4">
         <figure className="aspect-square flex-[1] overflow-hidden rounded-sm relative">
           <Image
-            src="https://images.unsplash.com/photo-1684697136517-2a1a88e5e02d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+            src="https://images.unsplash.com/photo-1682687982093-4773cb0dbc2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80"
             alt="alt"
             fill={true}
             style={{ objectFit: "cover" }}
+            sizes="100%"
           />
         </figure>
         <div className="flex flex-[2] flex-col justify-between">
@@ -158,8 +160,8 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
               Apple Tax
             </h3>
           </div>
-          <div className="flex w-full flex-row items-center justify-between">
-            <span>summary</span> <span>3 min read</span>
+          <div className="flex w-full flex-row items-center justify-between text-zinc-500">
+            <span>see more +</span> <span>3 min read</span>
           </div>
           {/* <p>{props.body}</p> */}
           {/* <p>{props.categories}</p> */}
@@ -216,9 +218,9 @@ const Home: NextPage = () => {
       <section className="p-4">
         <Billboard />
       </section>
-      {/* <section className="p-4">
+      <section className="p-4 mt-20">
         <Feed />
-      </section> */}
+      </section>
     </>
   );
 };
