@@ -87,7 +87,7 @@ const Feed = () => {
   if (!data) return <div>Something went wrong</div>;
 
   return (
-    <div className="flex grow flex-col">
+    <div className="flex grow flex-col gap-2">
       {[...data].map((fullPost) => (
         <PostView {...fullPost} key={fullPost.post.id} />
       ))}
@@ -110,7 +110,7 @@ type ArticleShape = {
 const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-col gap-4 border-b border-zinc-800 px-2 pb-4">
+      <div className="flex flex-col gap-4 border-b border-zinc-800 pb-4">
         <figure className="aspect-video overflow-hidden rounded-md relative">
           <Image
             src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
@@ -140,7 +140,7 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
 const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 px-2 pb-4">
+      <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 pb-4">
         <figure className="aspect-square flex-[1] overflow-hidden rounded-sm relative">
           <Image
             src="https://images.unsplash.com/photo-1682687982093-4773cb0dbc2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80"
@@ -219,6 +219,7 @@ const Home: NextPage = () => {
         <Billboard />
       </section>
       <section className="p-4 mt-20">
+        <h2 className="mb-4">Community Leaks</h2>
         <Feed />
       </section>
     </>

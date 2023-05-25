@@ -31,7 +31,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="flex flex-4 flex-row items-center justify-center">
+        <div className="hidden flex-4 flex-row items-center justify-center md:flex">
           <Navigation />
         </div>
 
