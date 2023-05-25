@@ -106,16 +106,47 @@ type ArticleShape = {
   slug: string;
 };
 
+const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
+  return (
+    <Link href={`/article/${slug}`} className="w-full">
+      <div className="flex flex-col gap-4 border-b border-zinc-800 pb-4">
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1682687220640-9d3b11ca30e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80"
+            alt="alt"
+          />
+        </figure>
+        <div>
+          <p>{`${dayjs(publishedAt).format('MMM, YYYY')} • ${dayjs(publishedAt).fromNow()}`}</p>
+          <h3 className="mb-4">{title}</h3>
+          <p>{author.name}</p>
+          {/* <p>{props.body}</p> */}
+          {/* <p>{props.categories}</p> */}
+          <p>{slug}</p>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-col border-b border-zinc-800 p-4">
-        <h3 className="mb-4">{title}</h3>
-        <p>{`${dayjs(publishedAt).fromNow()}`}</p>
-        <p>{author.name}</p>
-        {/* <p>{props.body}</p> */}
-        {/* <p>{props.categories}</p> */}
-        <p>{slug}</p>
+      <div className="flex flex-row-reverse border-b border-zinc-800 pb-4">
+        <figure className="flex-[1]">
+          <img
+            src="https://images.unsplash.com/photo-1682687220640-9d3b11ca30e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80"
+            alt="alt"
+          />
+        </figure>
+        <div className="flex-[2]">
+          <p>{`${dayjs(publishedAt).format('MMM, YYYY')} • ${dayjs(publishedAt).fromNow()}`}</p>
+          <h3 className="mb-4">{title}</h3>
+          <p>{author.name}</p>
+          {/* <p>{props.body}</p> */}
+          {/* <p>{props.categories}</p> */}
+          <p>{slug}</p>
+        </div>
       </div>
     </Link>
   );
@@ -137,6 +168,11 @@ const Billboard = () => {
     <div className="flex flex-col gap-4 md:flex-row">
       <div className="flex w-full flex-[2] flex-col gap-4">
         {[...data].slice(0, 1).map((post) => (
+          <CardFeature {...post} key={post.slug} />
+        ))}
+      </div>
+      <div className="flex w-full flex-[1] flex-col gap-4">
+        {[...data].map((post) => (
           <Card {...post} key={post.slug} />
         ))}
       </div>
@@ -163,7 +199,7 @@ const Home: NextPage = () => {
       <section className="p-4">
         <Billboard />
       </section>
-      {/* <section className="p-4 border-t">
+      {/* <section className="p-4">
         <Feed />
       </section> */}
     </>

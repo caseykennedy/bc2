@@ -15,9 +15,6 @@ export default {
     },
     extend: {
       colors: {
-        green: {
-          50: '#00ff9b',
-        },
       },
     },
   },

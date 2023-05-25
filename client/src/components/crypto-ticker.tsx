@@ -6,7 +6,12 @@ import {
 } from "coingecko-api-v3";
 import React, { useEffect, useState } from "react";
 
-const Coin = ({ name, image, current_price }: CoinMarket) => {
+const Coin = ({
+  name,
+  image,
+  current_price,
+  price_change_percentage_24h,
+}: CoinMarket) => {
   // const currentChange = coin.price_change_percentage_24h;
 
   // let color;
@@ -23,17 +28,16 @@ const Coin = ({ name, image, current_price }: CoinMarket) => {
   // }
   return (
     <div className="flex flex-1 flex-row items-center gap-2 bg-zinc-950 px-4 py-3 text-sm">
-      <div className="flex items-center justify-center overflow-hidden rounded-full bg-zinc-700">
+      <div className="flex items-center justify-center overflow-hidden rounded-full border border-zinc-600 bg-zinc-900">
         <img width="24px" height="24px" src={image} alt={name} />
       </div>
-      <div className="flex flex-col">
-        <div className="coin-title">
-          <div className="text-zinc-400">{name}</div>
-        </div>
-        <div className="coin-info">
-          <div className="coin-info__price">{current_price}</div>
-          {/* <div className="coin-info__carat">{carat}</div> */}
-          {/* <div className="coin-info__change">{currentChange.toFixed(2)}%</div> */}
+      <div className="flex flex-row gap-2">
+        <div className="text-zinc-400">{name}</div>
+
+        <div className="">{current_price}</div>
+
+        <div className="">
+          {price_change_percentage_24h?.toFixed(2)}%
         </div>
       </div>
     </div>
@@ -57,7 +61,7 @@ const CryptoTicker = () => {
           vs_currency: "usd",
           per_page: 15,
           page: 1,
-          ids: 'bitcoin, ethereum, chainline, handshake, litecoin, cardano',
+          ids: "bitcoin, ethereum, chainline, handshake, litecoin, cosmos",
           sparkline: false,
           price_change_percentage: "24h",
         });
