@@ -36,9 +36,7 @@ const Coin = ({
 
         <div className="">{current_price}</div>
 
-        <div className="">
-          {price_change_percentage_24h?.toFixed(2)}%
-        </div>
+        <div className="">{price_change_percentage_24h?.toFixed(2)}%</div>
       </div>
     </div>
   );
@@ -85,7 +83,7 @@ const CryptoTicker = () => {
   }, [data]);
 
   return (
-    <div className="flex w-full flex-row items-center justify-center border-b border-zinc-800 bg-zinc-900">
+    <div className="no-scrollbar flex w-full flex-row items-center justify-center overflow-x-auto overflow-y-scroll border-b border-zinc-800 bg-zinc-800">
       <div className="flex grow flex-row gap-[1px]">
         {!isLoading ? (
           data?.map((value, idx) => <Coin {...value} key={idx} />)

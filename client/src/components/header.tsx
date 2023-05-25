@@ -9,7 +9,7 @@ const Navigation = () => {
   return (
     <ul className="flex">
       {nav.map((item, idx) => (
-        <li className="mx-2" key={idx}>
+        <li className="mx-3" key={idx}>
           <Link href={item.link} className="capitalize text-lg">
             {item.name}
           </Link>

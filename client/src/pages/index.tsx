@@ -1,6 +1,7 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import dayjs from "dayjs";
 import { type NextPage } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -110,20 +111,22 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
       <div className="flex flex-col gap-4 border-b border-zinc-800 px-2 pb-4">
-        <figure className="aspect-video overflow-hidden rounded-md">
-          <img
-            src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+        <figure className="aspect-video overflow-hidden rounded-md relative">
+          <Image
+            src="https://images.unsplash.com/photo-1684182034463-90724c4947cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2096&q=80"
             alt="alt"
+            fill={true}
+            style={{ objectFit: "cover" }}
           />
         </figure>
         <div>
           <p className="text-sm">{dayjs(publishedAt).format("MMM DD, YYYY")}</p>
-          <h3 className="mb-4 text-4xl">
+          <h3 className="mb-4 text-4xl max-w-[30ch]">
             How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
             Alike
           </h3>
           <div className="flex w-full grow flex-row items-center justify-between">
-            <span>summary</span> <span>3 min read</span>
+            <span>see more +</span> <span>3 min read</span>
           </div>
           {/* <p>{props.body}</p> */}
           {/* <p>{props.categories}</p> */}
@@ -137,10 +140,12 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
       <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 px-2 pb-4">
-        <figure className="aspect-auto flex-[1] overflow-hidden rounded-sm">
-          <img
-            src="https://images.unsplash.com/photo-1684457718740-190e844d5cb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1320&q=80"
+        <figure className="aspect-square flex-[1] overflow-hidden rounded-sm relative">
+          <Image
+            src="https://images.unsplash.com/photo-1684697136517-2a1a88e5e02d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
             alt="alt"
+            fill={true}
+            style={{ objectFit: "cover" }}
           />
         </figure>
         <div className="flex flex-[2] flex-col justify-between">
@@ -149,8 +154,8 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
               {dayjs(publishedAt).format("MMM DD, YYYY")}
             </p>
             <h3 className="mb-4 text-xl">
-              You Can Now Buy Stepn NFTs on iOS—But You&apos;ll Have to Pay the Apple
-              Tax
+              You Can Now Buy Stepn NFTs on iOS—But You&apos;ll Have to Pay the
+              Apple Tax
             </h3>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
