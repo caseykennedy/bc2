@@ -61,7 +61,7 @@ const CryptoTicker = () => {
           vs_currency: "usd",
           per_page: 15,
           page: 1,
-          ids: "bitcoin, ethereum, chainline, handshake, litecoin, cosmos",
+          ids: "bitcoin, ethereum, chainline, handshake, litecoin, cosmos, osmosis",
           sparkline: false,
           price_change_percentage: "24h",
         });

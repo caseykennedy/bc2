@@ -109,20 +109,24 @@ type ArticleShape = {
 const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-col gap-4 border-b border-zinc-800 pb-4">
-        <figure>
+      <div className="flex flex-col gap-4 border-b border-zinc-800 px-2 pb-4">
+        <figure className="aspect-video overflow-hidden rounded-md">
           <img
-            src="https://images.unsplash.com/photo-1682687220640-9d3b11ca30e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80"
+            src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
             alt="alt"
           />
         </figure>
         <div>
-          <p>{`${dayjs(publishedAt).format('MMM, YYYY')} • ${dayjs(publishedAt).fromNow()}`}</p>
-          <h3 className="mb-4">{title}</h3>
-          <p>{author.name}</p>
+          <p className="text-sm">{dayjs(publishedAt).format("MMM DD, YYYY")}</p>
+          <h3 className="mb-4 text-4xl">
+            How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
+            Alike
+          </h3>
+          <div className="flex w-full grow flex-row items-center justify-between">
+            <span>summary</span> <span>3 min read</span>
+          </div>
           {/* <p>{props.body}</p> */}
           {/* <p>{props.categories}</p> */}
-          <p>{slug}</p>
         </div>
       </div>
     </Link>
@@ -132,20 +136,28 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
 const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-row-reverse border-b border-zinc-800 pb-4">
-        <figure className="flex-[1]">
+      <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 px-2 pb-4">
+        <figure className="aspect-auto flex-[1] overflow-hidden rounded-sm">
           <img
-            src="https://images.unsplash.com/photo-1682687220640-9d3b11ca30e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80"
+            src="https://images.unsplash.com/photo-1684457718740-190e844d5cb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1320&q=80"
             alt="alt"
           />
         </figure>
-        <div className="flex-[2]">
-          <p>{`${dayjs(publishedAt).format('MMM, YYYY')} • ${dayjs(publishedAt).fromNow()}`}</p>
-          <h3 className="mb-4">{title}</h3>
-          <p>{author.name}</p>
+        <div className="flex flex-[2] flex-col justify-between">
+          <div>
+            <p className="text-sm">
+              {dayjs(publishedAt).format("MMM DD, YYYY")}
+            </p>
+            <h3 className="mb-4 text-xl">
+              You Can Now Buy Stepn NFTs on iOS—But You&apos;ll Have to Pay the Apple
+              Tax
+            </h3>
+          </div>
+          <div className="flex w-full flex-row items-center justify-between">
+            <span>summary</span> <span>3 min read</span>
+          </div>
           {/* <p>{props.body}</p> */}
           {/* <p>{props.categories}</p> */}
-          <p>{slug}</p>
         </div>
       </div>
     </Link>
@@ -176,11 +188,11 @@ const Billboard = () => {
           <Card {...post} key={post.slug} />
         ))}
       </div>
-      <div className="flex w-full flex-[1] flex-col gap-4">
+      {/* <div className="flex w-full flex-[1] flex-col gap-4">
         {[...data].map((post) => (
           <Card {...post} key={post.slug} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
