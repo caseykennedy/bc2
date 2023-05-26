@@ -111,7 +111,7 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
       <div className="flex flex-col gap-4 border-b border-zinc-800 pb-4">
-        <figure className="aspect-video overflow-hidden rounded-md relative">
+        <figure className="relative aspect-video overflow-hidden rounded-md">
           <Image
             src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
             alt="alt"
@@ -122,7 +122,7 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
         </figure>
         <div>
           <p className="text-sm">{dayjs(publishedAt).format("MMM DD, YYYY")}</p>
-          <h3 className="mb-8 text-4xl max-w-[36ch]">
+          <h3 className="mb-8 max-w-[36ch] text-4xl">
             How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
             Alike
           </h3>
@@ -141,7 +141,7 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
       <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 pb-4">
-        <figure className="aspect-square flex-[1] overflow-hidden rounded-sm relative">
+        <figure className="relative aspect-portrait flex-[1] overflow-hidden rounded-sm">
           <Image
             src="https://images.unsplash.com/photo-1682687982093-4773cb0dbc2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80"
             alt="alt"
@@ -184,8 +184,8 @@ const Billboard = () => {
 
   if (!data) return <div>Something went wrong</div>;
   return (
-    <div className="flex flex-col gap-4 md:flex-row">
-      <div className="flex w-full flex-[2] flex-col gap-4">
+    <div className="flex flex-col gap md:flex-row">
+      <div className="flex w-full flex-[2] flex-col gap">
         {[...data].slice(0, 1).map((post) => (
           <CardFeature {...post} key={post.slug} />
         ))}
@@ -215,10 +215,10 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <section className="p-4">
+      <section className="gutter">
         <Billboard />
       </section>
-      <section className="p-4 mt-20">
+      <section className="mt-20 gutter">
         <h2 className="mb-4">Community Leaks</h2>
         <Feed />
       </section>

@@ -16,7 +16,7 @@ const Sanity: NextPage<{ slug: string }> = ({ slug }) => {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <section className="p-4">
+      <section className="gutter">
         <article>
           {/* <h1>{post?.slug?.current}</h1> */}
           <h1>{data.title}</h1>

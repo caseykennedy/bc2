@@ -14,6 +14,19 @@
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
+
+    .gutter {
+      @apply p-4 sm:p-6 md:p-8 lg:p-10;
+    }
+    .gutter-x {
+      @apply px-4 sm:px-6 md:px-8 lg:px-10;
+    }
+    .gutter-y {
+      @apply py-4 sm:py-6 md:py-8 lg:py-10;
+    }
+    .gap {
+      @apply gap-4 sm:gap-6 md:gap-8;
+    }
   }
 }
 

@@ -16,6 +16,9 @@ export default {
     extend: {
       colors: {
       },
+      aspectRatio: {
+        'portrait': '9 / 11',
+      },
     },
   },
   plugins: [],
