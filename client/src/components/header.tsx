@@ -22,12 +22,12 @@ const Navigation = () => {
 const Header = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
   return (
-    <header className="overflow-none flex w-full border-b border-zinc-800 bg-zinc-900 py-6">
+    <header className="overflow-none flex w-full border-b border-zinc-800 bg-black py-6">
       <div className="flex w-full flex-row justify-between md:max-w-[1440px] mx-auto gutter-x">
         <div className="flex-1 text-lg">
           <Link href="/" className="flex flex-row items-center gap-4">
             <LogoSymbol />
-            BC Leaks
+            {/* BC Leaks */}
           </Link>
         </div>
 
