@@ -3,6 +3,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 
 import ScrollProgress from "~/components/scroll-progress";
+import Section from "~/components/section";
 import { generateSSGHelper } from "~/server/helpers/ssgHelper";
 import { api } from "~/utils/api";
 
@@ -18,7 +19,7 @@ const Sanity: NextPage<{ slug: string }> = ({ slug }) => {
         <title>{data.title}</title>
       </Head>
       <ScrollProgress />
-      <section className="gutter">
+      <Section>
         <article>
           {/* <h1>{post?.slug?.current}</h1> */}
           <h1>{data.title}</h1>
@@ -87,7 +88,7 @@ const Sanity: NextPage<{ slug: string }> = ({ slug }) => {
           <p>+</p>
           <p>+</p>
         </article>
-      </section>
+      </Section>
     </>
   );
 };

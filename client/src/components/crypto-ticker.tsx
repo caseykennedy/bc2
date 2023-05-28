@@ -1,3 +1,5 @@
+import "swiper/swiper.min.css";
+
 import {
   CoinGeckoClient,
   type CoinItem,
@@ -5,6 +7,10 @@ import {
   type TrendingItem,
 } from "coingecko-api-v3";
 import React, { useEffect, useState } from "react";
+import { Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import Marquee from "./marquee";
 
 const Coin = ({
   name,
@@ -27,12 +33,12 @@ const Coin = ({
   //   }
   // }
   return (
-    <div className="flex flex-1 flex-row flex-nowrap items-center gap-2 px-8 py-3 text-sm">
-      <div className="h-[24px] w-[24px] flex items-center justify-center overflow-hidden rounded-full border border-zinc-600 bg-zinc-900">
+    <div className="flex flex-row flex-nowrap items-center justify-center gap-2 px-8 py-3 text-sm">
+      <div className="flex h-[24px] w-[24px] items-center justify-center overflow-hidden rounded-full border border-zinc-600 bg-zinc-900">
         <img width="24px" height="24px" src={image} alt={name} />
       </div>
       <div className="flex flex-row gap-2">
-        <div className="text-zinc-400 whitespace-nowrap">{name}</div>
+        <div className="whitespace-nowrap text-zinc-400">{name}</div>
 
         <div className="">{current_price}</div>
 
@@ -59,7 +65,7 @@ const CryptoTicker = () => {
           vs_currency: "usd",
           per_page: 15,
           page: 1,
-          ids: "bitcoin, ethereum, chainline, handshake, litecoin, cosmos, osmosis",
+          ids: "bitcoin, ethereum, chainlink, handshake, litecoin, cosmos, osmosis, uniswap, zcash, cardano",
           sparkline: false,
           price_change_percentage: "24h",
         });
@@ -83,14 +89,14 @@ const CryptoTicker = () => {
   }, [data]);
 
   return (
-    <div className="no-scrollbar flex w-full flex-row items-center justify-center overflow-x-auto overflow-y-scroll border-b border-zinc-800 bg-zinc-950">
-      <div className="flex grow flex-row">
+    <div className="flex w-full flex-row items-center overflow-hidden border-b border-zinc-800 bg-zinc-950">
+      <Marquee>
         {!isLoading ? (
           data?.map((value, idx) => <Coin {...value} key={idx} />)
         ) : (
-          <div className="is-loading">loading...</div>
+          <div className="is-loading py-3">loading...</div>
         )}
-      </div>
+      </Marquee>
     </div>
   );
 };

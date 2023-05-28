@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { LoadingPage } from "~/components/loading";
 import { PostView } from "~/components/postview";
+import Section from "~/components/section";
 import { generateSSGHelper } from "~/server/helpers/ssgHelper";
 import { api } from "~/utils/api";
 
@@ -35,7 +36,7 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
       <Head>
         <title>{data.username ?? data.externalUsername}</title>
       </Head>
-      <section className="p-4">
+      <Section>
         <div className="relative h-36 bg-zinc-900">
           <Image
             src={data.profileImageUrl}
@@ -53,7 +54,7 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
         }`}</div>
         <div className="w-full border-b border-zinc-800" />
         <ProfileFeed userId={data.id} />
-      </section>
+      </Section>
     </>
   );
 };

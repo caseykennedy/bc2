@@ -9,7 +9,7 @@ export const Layout = (props: PropsWithChildren) => {
       <Header />
       <CryptoTicker />
       <main className="nowrap flex w-full flex-auto flex-col">
-        <div className="relative z-10 mx-auto flex h-full w-full flex-col md:max-w-[1440px]">
+        <div className="relative z-10 mx-auto flex h-full w-full flex-col">
           {props.children}
         </div>
       </main>

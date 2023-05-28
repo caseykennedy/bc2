@@ -1,4 +1,4 @@
-import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import dayjs from "dayjs";
 import { type NextPage } from "next";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { PostView } from "~/components/postview";
+import Section from "~/components/section";
 import { api } from "~/utils/api";
 
 const CreatePostWizard = () => {
@@ -184,8 +185,8 @@ const Billboard = () => {
 
   if (!data) return <div>Something went wrong</div>;
   return (
-    <div className="flex flex-col gap md:flex-row">
-      <div className="flex w-full flex-[2] flex-col gap">
+    <div className="gap flex flex-col md:flex-row">
+      <div className="gap flex w-full flex-[2] flex-col">
         {[...data].slice(0, 1).map((post) => (
           <CardFeature {...post} key={post.slug} />
         ))}
@@ -215,13 +216,13 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <section className="gutter">
+      <Section>
         <Billboard />
-      </section>
-      <section className="mt-20 gutter">
+      </Section>
+      <Section>
         <h2 className="mb-4">Community Leaks</h2>
         <Feed />
-      </section>
+      </Section>
     </>
   );
 };

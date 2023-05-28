@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import { Layout } from "~/components/layout";
 import { PostView } from "~/components/postview";
+import Section from "~/components/section";
 import { generateSSGHelper } from "~/server/helpers/ssgHelper";
 import { api } from "~/utils/api";
 
@@ -19,7 +20,9 @@ const SinglePostPage: NextPage<{ id: string }> = ({ id }) => {
         <title>{`@${data.author.username}`}</title>
         {/* <title>{`${data.post.content} - @${data.author.username}`}</title> */}
       </Head>
-      <PostView {...data} />
+      <Section>
+        <PostView {...data} />
+      </Section>
     </>
   );
 };
