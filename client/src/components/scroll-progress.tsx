@@ -30,8 +30,8 @@ const ScrollProgress = () => {
   }, [scrollTop]);
 
   return (
-    <div className="sticky left-0 top-[88px] z-10 h-[4px] w-full bg-black">
-      <div className={`h-[4px] bg-emerald-500`} style={{ width: `${scrollTop}%` }} />
+    <div className="sticky left-0 top-[88px] z-10 h-[3px] w-full bg-black">
+      <div className={`h-[3px] bg-emerald-500`} style={{ width: `${scrollTop}%` }} />
     </div>
   );
 };

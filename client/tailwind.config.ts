@@ -21,7 +21,7 @@ export default {
       },
       fontFamily: {
         sans: ['NBInternationalPro', 'Arial', 'sans-serif'],
-        mono: ['NBInternationalProMono', 'JetBrains Mono', 'monospace'],
+        mono: ['SuisseMono', 'JetBrains Mono', 'monospace'],
         display: ['Rubik', 'Arial', 'sans-serif'],
       },
     },

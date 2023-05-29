@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Acid Grotesk Regular */
+/* Rubik Regular */
 @font-face {
   font-family: "Rubik";
   src: url("/fonts/Rubik-Bold.eot");
@@ -15,14 +15,27 @@
   font-display: swap;
 }
 
-/* NBInternationalPro Mono */
+/* Suisse Mono */
 @font-face {
-  font-family: "NBInternationalProMono";
-  src: url("/fonts/NBInternationalPro-Mono.eot");
-  src: url("/fonts/NBInternationalPro-Mono.woff2") format("woff2"),
-    url("/fonts/NBInternationalPro-Mono.woff") format("woff"),
-    url("/fonts/NBInternationalPro-Mono.otf") format("opentype"),
-    url("/fonts/NBInternationalPro-Mono.eot"?#iefix) format("embedded-opentype");
+  font-family: "SuisseMono";
+  src: url("/fonts/SuisseIntlMono-Regular.eot");
+  src: url("/fonts/SuisseIntlMono-Regular.woff2") format("woff2"),
+    url("/fonts/SuisseIntlMono-Regular.woff") format("woff"),
+    url("/fonts/SuisseIntlMono-Regular.otf") format("opentype"),
+    url("/fonts/SuisseIntlMono-Regular.eot"?#iefix) format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Suisse Intl Regular */
+@font-face {
+  font-family: "Suisse";
+  src: url("/fonts/SuisseIntl-Regular.eot");
+  src: url("/fonts/SuisseIntl-Regular.woff2") format("woff2"),
+    url("/fonts/SuisseIntl-Regular.woff") format("woff"),
+    url("/fonts/SuisseIntl-Regular.otf") format("opentype"),
+    url("/fonts/SuisseIntl-Regular.eot"?#iefix) format("embedded-opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;

@@ -10,7 +10,7 @@ const Navigation = () => {
     <ul className="flex">
       {nav.map((item, idx) => (
         <li className="px-4" key={idx}>
-          <Link href={item.link} className="font-display uppercase">
+          <Link href={item.link} className="font-display uppercase text-base">
             {item.name}
           </Link>
         </li>
@@ -22,12 +22,16 @@ const Navigation = () => {
 const Header = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
   return (
-    <header className="overflow-none h-header sticky top-0 z-40 flex items-center w-full bg-black/80 backdrop-blur-lg">
+    <header className="overflow-none h-header sticky top-0 z-40 flex w-full items-center bg-black/80 backdrop-blur-lg">
       <div className="gutter-x mx-auto flex w-full flex-row justify-between md:max-w-[1440px]">
-        <div className="flex-1 text-lg">
-          <Link href="/" className="flex flex-row items-center gap-4">
+        <div className="flex-1 flex items-center md:hidden">
+          <div className="btn btn-outline flex items-center">+</div>
+        </div>
+
+        <div className="flex flex-1 justify-center text-lg md:justify-start">
+          <Link href="/">
             <LogoSymbol />
-            BC Leaks
+            {/* BC Leaks */}
           </Link>
         </div>
 
@@ -35,7 +39,7 @@ const Header = () => {
           <Navigation />
         </div>
 
-        <div className="flex flex-1 items-center justify-end">
+        <div className="flex flex-1 items-center justify-end gap-1">
           {!isSignedIn ? (
             <div>
               <SignInButton mode="modal">
@@ -54,6 +58,9 @@ const Header = () => {
               }}
             />
           )}
+          <div className="hidden md:block">
+            <div className="btn btn-outline flex items-center">+</div>
+          </div>
         </div>
       </div>
     </header>
