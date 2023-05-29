@@ -127,7 +127,7 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
             How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
             Alike
           </h3>
-          <div className="flex w-full grow flex-row items-center justify-between text-zinc-500">
+          <div className="flex w-full grow flex-row items-center justify-between font-mono text-sm uppercase text-zinc-500">
             <span>see more +</span> <span>3 min read</span>
           </div>
           {/* <p>{props.body}</p> */}
@@ -220,7 +220,7 @@ const Home: NextPage = () => {
         <Billboard />
       </Section>
       <Section>
-        <h2 className="mb-4">Community Leaks</h2>
+        <h2 className="mb-4 font-display uppercase">Community Leaks</h2>
         <Feed />
       </Section>
     </>

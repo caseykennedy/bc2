@@ -2,6 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Acid Grotesk Regular */
+@font-face {
+  font-family: "Rubik";
+  src: url("/fonts/Rubik-Bold.eot");
+  src: url("/fonts/Rubik-Bold.woff2") format("woff2"),
+    url("/fonts/Rubik-Bold.woff") format("woff"),
+    url("/fonts/Rubik-Bold.otf") format("opentype"),
+    url("/fonts/Rubik-Bold.eot"?#iefix) format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NBInternationalPro Mono */
+@font-face {
+  font-family: "NBInternationalProMono";
+  src: url("/fonts/NBInternationalPro-Mono.eot");
+  src: url("/fonts/NBInternationalPro-Mono.woff2") format("woff2"),
+    url("/fonts/NBInternationalPro-Mono.woff") format("woff"),
+    url("/fonts/NBInternationalPro-Mono.otf") format("opentype"),
+    url("/fonts/NBInternationalPro-Mono.eot"?#iefix) format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NBInternationalPro Regular */
+@font-face {
+  font-family: "NBInternationalPro";
+  src: url("/fonts/NBInternationalPro-Regular.eot");
+  src: url("/fonts/NBInternationalPro-Regular.woff2") format("woff2"),
+    url("/fonts/NBInternationalPro-Regular.woff") format("woff"),
+    url("/fonts/NBInternationalPro-Regular.otf") format("opentype"),
+    url("/fonts/NBInternationalPro-Regular.eot"?#iefix)
+      format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NBInternationalPro Light */
+@font-face {
+  font-family: "NBInternationalPro";
+  src: url("/fonts/NBInternationalPro-Light.eot");
+  src: url("/fonts/NBInternationalPro-Light.woff2") format("woff2"),
+    url("/fonts/NBInternationalPro-Light.woff") format("woff"),
+    url("/fonts/NBInternationalPro-Light.otf") format("opentype"),
+    url("/fonts/NBInternationalPro-Light.eot"?#iefix)
+      format("embedded-opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NBInternationalPro Medium */
+@font-face {
+  font-family: "NBInternationalPro";
+  src: url("/fonts/NBInternationalPro-Medium.eot");
+  src: url("/fonts/NBInternationalPro-Medium.woff2") format("woff2"),
+    url("/fonts/NBInternationalPro-Medium.woff") format("woff"),
+    url("/fonts/NBInternationalPro-Medium.otf") format("opentype"),
+    url("/fonts/NBInternationalPro-Medium.eot"?#iefix)
+      format("embedded-opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NBInternationalPro Bold */
+@font-face {
+  font-family: "NBInternationalPro";
+  src: url("/fonts/NBInternationalPro-Bold.eot");
+  src: url("/fonts/NBInternationalPro-Bold.woff2") format("woff2"),
+    url("/fonts/NBInternationalPro-Bold.woff") format("woff"),
+    url("/fonts/NBInternationalPro-Bold.otf") format("opentype"),
+    url("/fonts/NBInternationalPro-Bold.eot"?#iefix) format("embedded-opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
@@ -31,6 +112,18 @@
     .gap {
       @apply gap-4 sm:gap-6 md:gap-8;
     }
+
+    .h-header {
+      height: 88px;
+    }
+
+    .btn {
+      @apply inline-flex items-center justify-center rounded-sm border border-transparent px-3 py-2 text-base font-medium text-zinc-300;
+    }
+
+    .btn-outline {
+      @apply border-zinc-800 bg-black font-mono text-sm uppercase text-primary transition-colors hover:bg-primary hover:text-black;
+    }
   }
 }
 
@@ -52,7 +145,7 @@
   }
 
   a {
-    @apply text-zinc-100 hover:text-green-400;
+    @apply text-zinc-200 hover:text-primary;
   }
 
   .border-color {

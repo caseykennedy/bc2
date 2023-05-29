@@ -1,14 +1,7 @@
 import "swiper/swiper.min.css";
 
-import {
-  CoinGeckoClient,
-  type CoinItem,
-  type CoinMarket,
-  type TrendingItem,
-} from "coingecko-api-v3";
+import { CoinGeckoClient, type CoinMarket } from "coingecko-api-v3";
 import React, { useEffect, useState } from "react";
-import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import Marquee from "./marquee";
 
@@ -89,12 +82,12 @@ const CryptoTicker = () => {
   }, [data]);
 
   return (
-    <div className="flex w-full flex-row items-center overflow-hidden border-b border-zinc-800 bg-zinc-950">
+    <div className="flex w-full flex-row items-center overflow-hidden border-t border-b border-zinc-800 bg-black">
       <Marquee>
         {!isLoading ? (
           data?.map((value, idx) => <Coin {...value} key={idx} />)
         ) : (
-          <div className="is-loading py-3">loading...</div>
+          <div className="is-loading py-3 text-zinc-600">loading...</div>
         )}
       </Marquee>
     </div>

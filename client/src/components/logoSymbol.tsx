@@ -1,7 +1,7 @@
 export const LogoSymbol = (props: { strokeWidth?: number; width?: number }) => (
   <svg
     strokeWidth={props.strokeWidth}
-    width={props.width ?? 30}
+    width={props.width ?? 33}
     viewBox="0 0 56.01 83.34"
   >
     <title>BC Leaks</title>

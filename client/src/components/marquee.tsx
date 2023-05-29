@@ -9,7 +9,7 @@ type Props = {
 
 const Marquee = ({
   children,
-  autoFill,
+  autoFill = true,
   direction = "left",
   speed = 40,
 }: Props) => {

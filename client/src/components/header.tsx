@@ -9,8 +9,8 @@ const Navigation = () => {
   return (
     <ul className="flex">
       {nav.map((item, idx) => (
-        <li className="mx-3" key={idx}>
-          <Link href={item.link} className="capitalize text-lg">
+        <li className="px-4" key={idx}>
+          <Link href={item.link} className="font-display uppercase">
             {item.name}
           </Link>
         </li>
@@ -22,23 +22,25 @@ const Navigation = () => {
 const Header = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
   return (
-    <header className="overflow-none flex w-full border-b border-zinc-800 bg-black py-6">
-      <div className="flex w-full flex-row justify-between md:max-w-[1440px] mx-auto gutter-x">
+    <header className="overflow-none h-header sticky top-0 z-40 flex items-center w-full bg-black/80 backdrop-blur-lg">
+      <div className="gutter-x mx-auto flex w-full flex-row justify-between md:max-w-[1440px]">
         <div className="flex-1 text-lg">
           <Link href="/" className="flex flex-row items-center gap-4">
             <LogoSymbol />
-            {/* BC Leaks */}
+            BC Leaks
           </Link>
         </div>
 
-        <div className="hidden flex-4 flex-row items-center justify-center md:flex">
+        <div className="flex-4 hidden flex-row items-center justify-center md:flex">
           <Navigation />
         </div>
 
-        <div className="flex-1 flex items-center justify-end">
+        <div className="flex flex-1 items-center justify-end">
           {!isSignedIn ? (
-            <div className="flex justify-center hover:text-green-300">
-              <SignInButton />
+            <div>
+              <SignInButton mode="modal">
+                <button className="btn btn-outline">Sign in</button>
+              </SignInButton>
             </div>
           ) : (
             <UserButton
