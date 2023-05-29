@@ -174,7 +174,6 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
 
 const Billboard = () => {
   const { data, isLoading: postsLoading } = api.sanity.getAll.useQuery();
-  console.log("data:", data);
 
   if (postsLoading)
     return (

@@ -1,7 +1,7 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
-import { LogoSymbol } from "~/components/logoSymbol";
+import { LogoSymbol } from "~/components/logo-symbol";
 
 import nav from "../../config/nav.json";
 
@@ -10,7 +10,7 @@ const Navigation = () => {
     <ul className="flex">
       {nav.map((item, idx) => (
         <li className="px-4" key={idx}>
-          <Link href={item.link} className="font-display uppercase text-base">
+          <Link href={item.link} className="font-display text-base uppercase">
             {item.name}
           </Link>
         </li>
@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header className="overflow-none h-header sticky top-0 z-40 flex w-full items-center bg-black/80 backdrop-blur-lg">
       <div className="gutter-x mx-auto flex w-full flex-row justify-between md:max-w-[1440px]">
-        <div className="flex-1 flex items-center md:hidden">
+        <div className="flex flex-1 items-center md:hidden">
           <div className="btn btn-outline flex items-center">+</div>
         </div>
 

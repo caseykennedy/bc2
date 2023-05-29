@@ -3,6 +3,8 @@ import "swiper/swiper.min.css";
 import { CoinGeckoClient, type CoinMarket } from "coingecko-api-v3";
 import React, { useEffect, useState } from "react";
 
+import { api } from "~/utils/api";
+
 import Marquee from "./marquee";
 
 const Coin = ({
@@ -42,6 +44,7 @@ const Coin = ({
 };
 
 const CryptoTicker = () => {
+  const { data: coingecko } = api.coingecko.getAll.useQuery();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<CoinMarket[]>();
 
@@ -62,12 +65,8 @@ const CryptoTicker = () => {
           sparkline: false,
           price_change_percentage: "24h",
         });
-        console.log("res:", res);
-
         const coins = res;
-
         setData(coins);
-
         setIsLoading(false);
       } catch (e) {
         console.log(e);
@@ -78,11 +77,11 @@ const CryptoTicker = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Trending Data:", data);
-  }, [data]);
+    console.log("coingecko:", coingecko);
+  }, [coingecko]);
 
   return (
-    <div className="flex w-full flex-row items-center overflow-hidden border-t border-b border-zinc-800 bg-black">
+    <div className="flex w-full flex-row items-center overflow-hidden border-b border-t border-zinc-800 bg-black">
       <Marquee>
         {!isLoading ? (
           data?.map((value, idx) => <Coin {...value} key={idx} />)

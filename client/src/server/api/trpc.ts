@@ -17,6 +17,7 @@
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 
 import { prisma } from "~/server/db";
+import { client as coingecko } from "~/utils/coingecko"
 import { client as sanity } from "~/utils/sanity"
 
 /**
@@ -35,6 +36,7 @@ export const createTRPCContext = (opts: CreateNextContextOptions) => {
     prisma,
     userId,
     sanity,
+    coingecko,
   };
 };
 
