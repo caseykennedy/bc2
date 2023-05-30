@@ -112,7 +112,7 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
       <div className="flex flex-col gap-4 border-b border-zinc-800 pb-4">
-        <figure className="relative aspect-video overflow-hidden rounded-md">
+        <figure className="relative aspect-video overflow-hidden rounded-sm">
           <Image
             src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
             alt="alt"
@@ -219,7 +219,7 @@ const Home: NextPage = () => {
         <Billboard />
       </Section>
       <Section>
-        <h2 className="mb-4 font-display uppercase">Community Leaks</h2>
+        <h2 className="mb-4">Community Leaks</h2>
         <Feed />
       </Section>
     </>

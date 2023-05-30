@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from "react";
 
 import CryptoTicker from "~/components/crypto-ticker";
+import Footer from "~/components/footer";
 import Header from "~/components/header";
 
 export const Layout = (props: PropsWithChildren) => {
@@ -13,7 +14,7 @@ export const Layout = (props: PropsWithChildren) => {
           {props.children}
         </div>
       </main>
-      {/* <footer className="p-4">footer</footer> */}
+      <Footer />
     </div>
   );
 };

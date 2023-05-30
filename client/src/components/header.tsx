@@ -1,9 +1,20 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
+import Icon from "~/components/icons";
 import { LogoSymbol } from "~/components/logo-symbol";
 
 import nav from "../../config/nav.json";
+
+const BtnEllipse = () => (
+  <button className="btn btn-outline btn-primary btn-icon group flex items-center">
+    <Icon
+      name="ellipses"
+      className="rotate-[0deg]"
+      fill="fill-primary-500 group-hover:fill-black"
+    />
+  </button>
+);
 
 const Navigation = () => {
   return (
@@ -24,14 +35,10 @@ const Header = () => {
   return (
     <header className="overflow-none h-header sticky top-0 z-40 flex w-full items-center bg-black/80 backdrop-blur-lg">
       <div className="gutter-x mx-auto flex w-full flex-row justify-between md:max-w-[1440px]">
-        <div className="flex flex-1 items-center md:hidden">
-          <div className="btn btn-outline flex items-center">+</div>
-        </div>
-
-        <div className="flex flex-1 justify-center text-lg md:justify-start">
-          <Link href="/">
+        <div className="flex flex-1 justify-start md:justify-start">
+          <Link href="/" className="flex items-center gap-4">
             <LogoSymbol />
-            {/* BC Leaks */}
+            <span className="font-mono uppercase">BC&bull;Leaks</span>
           </Link>
         </div>
 
@@ -43,7 +50,7 @@ const Header = () => {
           {!isSignedIn ? (
             <div>
               <SignInButton mode="modal">
-                <button className="btn btn-outline">Sign in</button>
+                <button className="btn btn-primary btn-outline">Sign in</button>
               </SignInButton>
             </div>
           ) : (
@@ -58,8 +65,8 @@ const Header = () => {
               }}
             />
           )}
-          <div className="hidden md:block">
-            <div className="btn btn-outline flex items-center">+</div>
+          <div className="">
+            <BtnEllipse />
           </div>
         </div>
       </div>

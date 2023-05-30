@@ -12,9 +12,21 @@ export default {
     extend: {
       space: {
         'header': '88px',
+        'icon': '24px',
       },
       colors: {
-        'primary': '#00ff9b',
+        'primary': {
+          '50': '#00ff9b',
+          '100': '#00ff9b',
+          '200': '#00ff9b',
+          '300': '#00ff9b',
+          '400': '#00ff9b',
+          '500': '#00ff9b',
+          '600': '#00ff9b',
+          '700': '#00ff9b',
+          '800': '#00ff9b',
+          '900': '#00ff9b',
+        }
       },
       aspectRatio: {
         'portrait': '9 / 11',
