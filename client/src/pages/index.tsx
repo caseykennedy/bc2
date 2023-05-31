@@ -110,9 +110,12 @@ type ArticleShape = {
 
 const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
-    <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-col gap-4 pb-4 md:flex-row-reverse">
-        <figure className="relative aspect-video w-full flex-[2] overflow-hidden rounded-sm">
+    <article>
+      <Link
+        href={`/article/${slug}`}
+        className="gap flex flex-col md:flex-row-reverse"
+      >
+        <figure className="relative aspect-video w-full flex-[2] overflow-hidden rounded">
           <Image
             src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
             alt="alt"
@@ -121,30 +124,30 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
             sizes="100%"
           />
         </figure>
-        <div className="flex-1 ">
-          <p className="mb-2 font-mono text-sm uppercase text-zinc-500">
-            {dayjs(publishedAt).format("MMM DD, YYYY")}
-          </p>
-          <h3 className="mb-8 max-w-[36ch] text-4xl">
-            How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
-            Alike
-          </h3>
-          <div className="flex w-full grow flex-row items-center justify-between font-mono text-sm uppercase text-zinc-500">
-            <span>see more +</span> <span>3 min read</span>
+        <div className="flex flex-1 flex-col justify-between">
+          <div>
+            <p className="mb-2 font-mono text-sm uppercase text-zinc-500">
+              {dayjs(publishedAt).format("MMM DD, YYYY")}
+            </p>
+            <h3 className="mb-8 max-w-[36ch] text-4xl">
+              How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
+              Alike
+            </h3>
           </div>
-          {/* <p>{props.body}</p> */}
-          {/* <p>{props.categories}</p> */}
+          <div className="flex w-full flex-row items-center justify-between font-mono text-sm uppercase text-zinc-500">
+            <span>view more +</span>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </article>
   );
 };
 
 const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 pb-4">
-        <figure className="relative aspect-portrait flex-[1] overflow-hidden rounded-sm">
+      <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 pb-4 lg:flex-col">
+        <figure className="relative aspect-video w-full flex-1 overflow-hidden rounded-sm">
           <Image
             src="https://images.unsplash.com/photo-1682687982093-4773cb0dbc2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80"
             alt="alt"
@@ -174,6 +177,40 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
   );
 };
 
+// const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
+//   return (
+//     <Link href={`/article/${slug}`} className="w-full">
+//       <div className="flex flex-row-reverse gap-4 border-b border-zinc-800 pb-4">
+//         <figure className="relative aspect-portrait flex-[1] overflow-hidden rounded-sm">
+//           <Image
+//             src="https://images.unsplash.com/photo-1682687982093-4773cb0dbc2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80"
+//             alt="alt"
+//             fill={true}
+//             style={{ objectFit: "cover" }}
+//             sizes="100%"
+//           />
+//         </figure>
+//         <div className="flex flex-[2] flex-col justify-between">
+//           <div>
+//             <p className="mb-2 font-mono text-sm uppercase text-zinc-500">
+//               {dayjs(publishedAt).format("MMM DD, YYYY")}
+//             </p>
+//             <h3 className="mb-4 text-xl">
+//               You Can Now Buy Stepn NFTs on iOS—But You&apos;ll Have to Pay the
+//               Apple Tax
+//             </h3>
+//           </div>
+//           <div className="flex w-full flex-row items-center justify-between font-mono text-sm uppercase text-zinc-500">
+//             <span>see more +</span> <span>3 min read</span>
+//           </div>
+//           {/* <p>{props.body}</p> */}
+//           {/* <p>{props.categories}</p> */}
+//         </div>
+//       </div>
+//     </Link>
+//   );
+// };
+
 const Billboard = () => {
   const { data, isLoading: postsLoading } = api.sanity.getAll.useQuery();
 
@@ -188,23 +225,45 @@ const Billboard = () => {
   return (
     <>
       <div className="gap flex flex-col lg:flex-row">
-        <div className="gap flex w-full flex-[2] flex-col lg:flex-[3]">
+        <div className="flex-[2] lg:flex-[3]">
           {[...data].slice(0, 1).map((post) => (
             <CardFeature {...post} key={post.slug} />
           ))}
         </div>
-        <div className="flex w-full flex-[1] flex-col gap-4">
-          {[...data].map((post) => (
+
+        <div className="flex w-full flex-[1] flex-col gap-4 rounded border border-zinc-800">
+          {/* {[...data].map((post) => (
             <Card {...post} key={post.slug} />
-          ))}
+          ))} */}
         </div>
       </div>
-      <div className="gap flex flex-col lg:flex-row mt-10 pt-4 border-t border-zinc-800">
+
+      {/* <div className="gap flex flex-col lg:flex-row mt-10 pt-4 border-t border-zinc-800">
         {[...data].map((post) => (
           <Card {...post} key={post.slug} />
         ))}
-      </div>
+      </div> */}
     </>
+  );
+};
+
+const Featured = () => {
+  const { data, isLoading: postsLoading } = api.sanity.getAll.useQuery();
+
+  if (postsLoading)
+    return (
+      <div className="flex grow">
+        <LoadingPage />
+      </div>
+    );
+
+  if (!data) return <div>Something went wrong</div>;
+  return (
+    <div className="gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      {[...data].map((post) => (
+        <Card {...post} key={post.slug} />
+      ))}
+    </div>
   );
 };
 
@@ -221,6 +280,9 @@ const Home: NextPage = () => {
     <>
       <Section>
         <Billboard />
+      </Section>
+      <Section border="true">
+        <Featured />
       </Section>
       <Section>
         <h2 className="mb-4">Community Leaks</h2>
