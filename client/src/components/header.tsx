@@ -33,12 +33,12 @@ const Navigation = () => {
 const Header = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
   return (
-    <header className="overflow-none h-header sticky top-0 z-40 flex w-full items-center bg-black/80 backdrop-blur-lg">
+    <header className="overflow-none h-header sticky top-0 z-40 flex w-full items-center border-b border-zinc-800 bg-black/80 backdrop-blur-lg">
       <div className="gutter-x mx-auto flex w-full flex-row justify-between md:max-w-[1440px]">
         <div className="flex flex-1 justify-start md:justify-start">
           <Link href="/" className="flex items-center gap-4">
             <LogoSymbol />
-            <span className="font-mono uppercase">BC&bull;Leaks</span>
+            {/* <span className="font-mono uppercase">BC&bull;Leaks</span> */}
           </Link>
         </div>
 

@@ -111,8 +111,8 @@ type ArticleShape = {
 const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
   return (
     <Link href={`/article/${slug}`} className="w-full">
-      <div className="flex flex-col gap-4 border-b border-zinc-800 pb-4">
-        <figure className="relative aspect-video overflow-hidden rounded-sm">
+      <div className="flex flex-col gap-4 pb-4 md:flex-row-reverse">
+        <figure className="relative aspect-video w-full flex-[2] overflow-hidden rounded-sm">
           <Image
             src="https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
             alt="alt"
@@ -121,8 +121,10 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
             sizes="100%"
           />
         </figure>
-        <div>
-          <p className="text-sm">{dayjs(publishedAt).format("MMM DD, YYYY")}</p>
+        <div className="flex-1 ">
+          <p className="mb-2 font-mono text-sm uppercase text-zinc-500">
+            {dayjs(publishedAt).format("MMM DD, YYYY")}
+          </p>
           <h3 className="mb-8 max-w-[36ch] text-4xl">
             How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
             Alike
@@ -153,7 +155,7 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
         </figure>
         <div className="flex flex-[2] flex-col justify-between">
           <div>
-            <p className="text-sm">
+            <p className="mb-2 font-mono text-sm uppercase text-zinc-500">
               {dayjs(publishedAt).format("MMM DD, YYYY")}
             </p>
             <h3 className="mb-4 text-xl">
@@ -161,7 +163,7 @@ const Card = ({ slug, title, publishedAt, author }: ArticleShape) => {
               Apple Tax
             </h3>
           </div>
-          <div className="flex w-full flex-row items-center justify-between text-zinc-500">
+          <div className="flex w-full flex-row items-center justify-between font-mono text-sm uppercase text-zinc-500">
             <span>see more +</span> <span>3 min read</span>
           </div>
           {/* <p>{props.body}</p> */}
@@ -184,23 +186,25 @@ const Billboard = () => {
 
   if (!data) return <div>Something went wrong</div>;
   return (
-    <div className="gap flex flex-col md:flex-row">
-      <div className="gap flex w-full flex-[2] flex-col">
-        {[...data].slice(0, 1).map((post) => (
-          <CardFeature {...post} key={post.slug} />
-        ))}
+    <>
+      <div className="gap flex flex-col lg:flex-row">
+        <div className="gap flex w-full flex-[2] flex-col lg:flex-[3]">
+          {[...data].slice(0, 1).map((post) => (
+            <CardFeature {...post} key={post.slug} />
+          ))}
+        </div>
+        <div className="flex w-full flex-[1] flex-col gap-4">
+          {[...data].map((post) => (
+            <Card {...post} key={post.slug} />
+          ))}
+        </div>
       </div>
-      <div className="flex w-full flex-[1] flex-col gap-4">
+      <div className="gap flex flex-col lg:flex-row mt-10 pt-4 border-t border-zinc-800">
         {[...data].map((post) => (
           <Card {...post} key={post.slug} />
         ))}
       </div>
-      {/* <div className="flex w-full flex-[1] flex-col gap-4">
-        {[...data].map((post) => (
-          <Card {...post} key={post.slug} />
-        ))}
-      </div> */}
-    </div>
+    </>
   );
 };
 

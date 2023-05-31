@@ -79,7 +79,7 @@ const CryptoTicker = () => {
   }, [fetchData]);
 
   return (
-    <div className="flex w-full flex-row items-center overflow-hidden border-b border-t border-zinc-800 bg-black">
+    <div className="flex w-full flex-row items-center overflow-hidden border-b border-zinc-800 bg-black">
       {!isLoading ? (
         <Marquee speed={40}>
           {data?.map((value, idx) => (

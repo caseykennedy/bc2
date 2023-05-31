@@ -132,7 +132,7 @@
 
     /* Buttons */
     .btn {
-      @apply inline-flex h-10 items-center justify-center rounded border border-transparent px-4 py-2 text-base font-medium uppercase tracking-wide text-zinc-300 active:translate-y-[1.5px];
+      @apply inline-flex h-10 items-center justify-center rounded-full border border-transparent px-5 py-2 text-base font-medium uppercase tracking-wide text-zinc-300 active:translate-y-[1.5px];
     }
 
     .btn-primary {
@@ -144,7 +144,7 @@
     }
 
     .btn-icon {
-      @apply h-10 w-11 border-transparent;
+      @apply h-10 w-10;
     }
   }
 }
