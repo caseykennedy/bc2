@@ -130,8 +130,7 @@ const CardFeature = ({ slug, title, publishedAt, author }: ArticleShape) => {
               {dayjs(publishedAt).format("MMM DD, YYYY")}
             </p>
             <h3 className="mb-8 max-w-[36ch] text-4xl">
-              How 3XP Plans to Reshape Cryptos Reputation Among Gamers and Nerds
-              Alike
+              How 3XP Plans to Reshape Cryptos Reputation Among Gamers
             </h3>
           </div>
           <div className="flex w-full flex-row items-center justify-between font-mono text-sm uppercase text-zinc-500">
